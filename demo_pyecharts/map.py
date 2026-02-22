@@ -4,7 +4,7 @@ from pyecharts import options as opts
 from pyecharts.charts import Map
 from pyecharts.faker import Faker
 from streamlit_echarts import Map as st_Map
-from streamlit_echarts import st_pyecharts
+from streamlit_echarts import st_echarts
 
 
 def render_map():
@@ -17,7 +17,7 @@ def render_map():
         title_opts=opts.TitleOpts(title="Map world"),
         visualmap_opts=opts.VisualMapOpts(max_=200),
     )
-    st_pyecharts(c, map=map, height=500)
+    st_echarts(options=json.loads(c.dump_options()), map=map, height="500px")
 
 
 ST_MAP_DEMOS = {

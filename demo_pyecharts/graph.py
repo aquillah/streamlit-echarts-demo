@@ -1,7 +1,8 @@
+import json
 from pyecharts import options as opts
 
 from pyecharts.charts import Graph
-from streamlit_echarts import st_pyecharts
+from streamlit_echarts import st_echarts
 
 
 def render_basic_graph_chart():
@@ -24,7 +25,7 @@ def render_basic_graph_chart():
         .add("", nodes, links, repulsion=8000)
         .set_global_opts(title_opts=opts.TitleOpts(title="Graph-基本示例"))
     )
-    st_pyecharts(c)
+    st_echarts(options=json.loads(c.dump_options()))
 
 
 ST_GRAPH_DEMOS = {

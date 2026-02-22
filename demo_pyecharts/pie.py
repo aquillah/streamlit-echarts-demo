@@ -1,8 +1,9 @@
+import json
 from pyecharts import options as opts
 
 from pyecharts.charts import Pie
 from pyecharts.faker import Faker
-from streamlit_echarts import st_pyecharts
+from streamlit_echarts import st_echarts
 
 def render_basic_pie_chart():
     c = (
@@ -11,7 +12,7 @@ def render_basic_pie_chart():
         .set_global_opts(title_opts=opts.TitleOpts(title="Pie-基本示例"))
         .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c}"))
     )
-    st_pyecharts(c)
+    st_echarts(options=json.loads(c.dump_options()))
 
 
 ST_PIE_DEMOS = {

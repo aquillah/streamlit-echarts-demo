@@ -60,7 +60,7 @@ def render_ring_gauge():
 
     st_echarts(option, height="500px", key="echarts")
     time.sleep(2)
-    st.experimental_rerun()
+    st.rerun()
 
 
 ST_GAUGE_DEMOS = {

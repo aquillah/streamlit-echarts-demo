@@ -17,11 +17,11 @@ def render_click_events():
     }
 
     st.markdown("Click on a bar for label + value, double click to see type+name+value")
-    s = st_echarts(
+    result = st_echarts(
         options=options, events=events, height="500px", key="render_basic_bar_events"
     )
-    if s is not None:
-        st.write(s)
+    if result and result.chart_event:
+        st.write(result.chart_event)
 
 
 def render_labelchanged():
@@ -58,11 +58,11 @@ def render_labelchanged():
     events = {
         "legendselectchanged": "function(params) { return params.selected }",
     }
-    s = st_echarts(
+    result = st_echarts(
         options=options, events=events, height="600px", key="render_pie_events"
     )
-    if s is not None:
-        st.write(s)
+    if result and result.chart_event:
+        st.write(result.chart_event)
 
 
 ST_EVENTS_DEMOS = {

@@ -12,10 +12,8 @@ def main():
 
     with st.sidebar:
         st.header("Configuration")
-        api_options = ("echarts", "pyecharts")
-        selected_api = st.selectbox(
-            label="Choose your preferred API:",
-            options=api_options,
+        selected_api = (
+            "pyecharts" if st.toggle("Use PyECharts API", value=False) else "echarts"
         )
 
         page_options = (
@@ -42,8 +40,8 @@ def main():
         if selected_api == "pyecharts":
             st.caption(
                 """Pyecharts demos are extracted from https://github.com/pyecharts/pyecharts-gallery,
-            by copying the pyecharts object into st_pyecharts. 
-            Pyecharts is still using ECharts 4 underneath, which is why the theming between st_echarts and st_pyecharts is different."""
+            by converting the pyecharts object to JSON via dump_options() and passing it to st_echarts. 
+            Pyecharts is still using ECharts 4 underneath, which is why the theming between st_echarts with raw options and st_echarts with pyecharts options may differ."""
             )
 
     demo()
@@ -62,7 +60,7 @@ if __name__ == "__main__":
     with st.sidebar:
         st.markdown("---")
         st.markdown(
-            '<h6>Made in &nbsp<img src="https://streamlit.io/images/brand/streamlit-mark-color.png" alt="Streamlit logo" height="16">&nbsp by <a href="https://twitter.com/andfanilo">@andfanilo</a></h6>',
+            '<h6>Made in &nbsp<img src="https://streamlit.io/images/brand/streamlit-mark-color.png" alt="Streamlit logo" height="16">&nbsp by <a href="https://andfanilo.com">@andfanilo</a></h6>',
             unsafe_allow_html=True,
         )
         st.markdown(
